@@ -12,11 +12,11 @@ logger = logging.getLogger('my_logger')
 def get_exec_time(func):
     def wrapper(*args, **kwargs):
         t1 = time.time()
-        func(*args, **kwargs)
+        func_ret = func(*args, **kwargs)
         logger.info(f'{"":=<80}')
         logger.info(f'Time took to execute: {time.strftime("%H:%M:%S", time.gmtime(time.time() - t1))}')
         logger.info(f'{"":=<80}')
-
+        return func_ret
     return wrapper
 
 
