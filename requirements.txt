@@ -1,0 +1,4 @@
+wget                # utilities\downloader.py, browser\chromedriver_manager.py
+requests            # utilities\downloader.py, browser\chromedriver_manager.py
+selenium            # browser\browser.py
+python-dateutil     # utilities\common_function.py
