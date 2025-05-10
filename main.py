@@ -37,11 +37,11 @@
 
 # checking common functions
 if __name__ == '__main__':
-    # from logs.logger_setup import start_logger
+    from logs.logger_setup import start_logger
     from utilities import common_function as cm
 
-    # start_logger('.')
-    # cm.show_in_box(['abhinav bhatnagar', 'bhatnagar'], double_line=True, enable_logs=True)
+    start_logger('.')
+    cm.show_in_box(['This is a sample text', 'This is another sample text'], double_line=True, enable_logs=True)
 
     dates = cm.date_range((2025, 2, 1), (2025, 3, 31), 3)
     for date in dates:
