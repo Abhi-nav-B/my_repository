@@ -11,7 +11,7 @@ def write_in_file(issue, in_detail, file_path):
         f.writelines(in_detail)
 
 
-def exception_log(e, is_file = False, file_path = None):
+def exception_log(e, is_file = False, file_path = '.'):
     exc_type, exc_obj, exc_tb = sys.exc_info()
     f_name = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
 
@@ -19,9 +19,6 @@ def exception_log(e, is_file = False, file_path = None):
     logger.error(e)
     # print((exc_type, f_name, f'Line: {exc_tb.tb_lineno}'))
     # print(e)
-
-    if file_path is None:
-        file_path = r'.'
 
     if is_file:
         write_in_file(str((exc_type, f_name, f'Line: {exc_tb.tb_lineno}')), '\n' + str(e), file_path)
