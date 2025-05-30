@@ -22,7 +22,8 @@ class CustomFormatter(logging.Formatter):
     RESET = '\033[0m'  # Reset to default color
 
     # create formatter and add it to the handlers
-    formatter = '{asctime} | {filename:23} | Line {lineno:4} | {levelname:8} | {message}'
+    # formatter = '{asctime} | {filename:23} | Line {lineno:4} | {levelname:8} | {message}'
+    formatter = '{asctime} | {levelname:8} | {message}'
 
     FORMATS = {
         logging.DEBUG: BLUE + formatter + RESET,
@@ -39,6 +40,13 @@ class CustomFormatter(logging.Formatter):
 
 
 def start_logger(logger_path: str = None, file_log_level=logging.INFO, console_log_level=logging.INFO):
+    """
+    to initiate the logging.
+
+    :param logger_path: path of the file where the logs will be saved. If not provided, the file logs will not be available. The file name must have ".log" or ".txt" extension otherwise the default file name of present date will be used.
+    :param file_log_level: the logging level to be logged in file, default is info and higher
+    :param console_log_level: the logging level to be logged on console, default is info and higher
+    """
     # initialising logger
     lgr = logging.getLogger('my_logger')
 
