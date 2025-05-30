@@ -48,6 +48,9 @@ def launch_browser(url: str = None,
     try:
         chrome = webdriver.Chrome(service=service, options=options)
 
+        if is_headless:
+            chrome.set_window_size(7680, 4320)
+
         if url is not None:
             chrome.get(url)
 
