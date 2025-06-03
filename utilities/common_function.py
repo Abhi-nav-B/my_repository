@@ -9,6 +9,19 @@ from dateutil.relativedelta import relativedelta
 logger = logging.getLogger('my_logger')
 
 
+def duration(func):
+    def wrapper(*args, **kwargs):
+        t1 = time.time()
+        func_return = func(*args, **kwargs)
+        logger.info(f'{"":=<80}')
+        logger.info(f'Time took to execute: {time.strftime("%H:%M:%S", time.gmtime(time.time() - t1))}')
+        print(f'Time took to execute: {time.strftime("%H:%M:%S", time.gmtime(time.time() - t1))}')
+        logger.info(f'{"":=<80}')
+        return func_return
+
+    return wrapper
+
+
 def get_exec_time(func):
     def wrapper(*args, **kwargs):
         t1 = time.time()
@@ -21,6 +34,8 @@ def get_exec_time(func):
 
 
 def countdown(t, msg: str | None = None, is_msg: bool = True):
+    time.sleep(0.5)  # helps to remove inline log in countdown representation
+
     base = t
     t = int(t)
 
